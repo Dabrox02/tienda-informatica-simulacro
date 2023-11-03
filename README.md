@@ -45,7 +45,9 @@
 8. Lista el nombre de todos los fabricantes en una columna, y en otra columna obtenga en mayúsculas los dos primeros caracteres del nombre del fabricante.
 
    ```sql
-   SELECT nombre, UPPER(SUBSTRING(nombre, 1,2)) as Primeros_2 FROM fabricante; 
+   SELECT nombre, UPPER(SUBSTRING(nombre, 1,2)) as Primeros_2 FROM fabricante;
+   -- ALTERNATIVA PROFESOR
+   SELECT nombre, CONCAT(UPPER(LEFT(nombre, 2)), substring(nombre, 3, LENGTH(nombre))) FROM fabricante;
    ```
 
 9. Lista los nombres y los precios de todos los `productos` de la tabla producto, redondeando el valor del precio.
@@ -105,6 +107,8 @@
 17. Devuelve una lista con 2 filas a partir de la cuarta fila de la tabla `fabricante`. La cuarta fila también se debe incluir en la respuesta.
 
    ```sql
+   SELECT * FROM fabricante LIMIT 2 OFFSET 3;
+   -- ALTERNATIVA
    SELECT * FROM fabricante WHERE id >= 4 ORDER BY id ASC LIMIT 2;
    ```
 
